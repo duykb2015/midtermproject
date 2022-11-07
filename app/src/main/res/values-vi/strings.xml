@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Đồ Án Giữa Kì</string>
+    <string name="app_first_hello">Xin chào bạn!</string>
+    <string name="app_login">Đăng nhập</string>
+    <string name="app_register">Đăng ký</string>
+    <string name="app_username">Tên đăng nhập</string>
+    <string name="app_password">Mật khẩu</string>
+    <string name="app_show_password">Hiện</string>
+    <string name="app_hide_password">Ẩn</string>
+    <string name="app_forget_password">Quên mật khẩu?</string>
+    <string name="app_welcome_message">Chào mừng đến với Đồ Án Giữa Kì, đăng nhập để thực hiện các chức năng!</string>
+
+    <string name="app_login_success">Đăng nhập thành công!</string>
+    <string name="app_login_fail">Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu!</string>
+    <string name="app_empty_info">Không được bỏ trống thông tin</string>
+</resources>
