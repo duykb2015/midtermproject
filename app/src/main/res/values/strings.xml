@@ -9,10 +9,19 @@
     <string name="app_register">Register</string>
     <string name="app_forget_password">Forget Password?</string>
     <string name="app_welcome_message">Welcome, login to start new session!</string>
+    <string name="app_back">Back</string>
 
     <string name="app_login_success">Login successfully!</string>
     <string name="app_login_fail">Login fail, please check your username and password again!</string>
     <string name="app_empty_info">The field cannot be empty</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_about_header">About me</string>
+    <string name="app_about_name">Full Name: Be Lang Duy</string>
+    <string name="app_about_class">Class: D19_TH03</string>
+    <string name="app_about_id">Student ID: DH51903060</string>
+    <string name="app_about_email">Email: DH51903060@student.stu.edu.vn</string>
+    <string name="app_about_phone">Phone: 0337803128</string>
+    <string name="app_about_map">...</string>
+
 </resources>

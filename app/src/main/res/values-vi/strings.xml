@@ -10,8 +10,17 @@
     <string name="app_hide_password">Ẩn</string>
     <string name="app_forget_password">Quên mật khẩu?</string>
     <string name="app_welcome_message">Chào mừng đến với Đồ Án Giữa Kì, đăng nhập để thực hiện các chức năng!</string>
+    <string name="app_back">Trở lại</string>
 
     <string name="app_login_success">Đăng nhập thành công!</string>
     <string name="app_login_fail">Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu!</string>
     <string name="app_empty_info">Không được bỏ trống thông tin</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_about_header">Giới thiệu về bản thân</string>
+    <string name="app_about_name">Họ và Tên: Bế Lãng Duy</string>
+    <string name="app_about_class">Lớp: D19_TH03</string>
+    <string name="app_about_id">MSSV: DH51903060</string>
+    <string name="app_about_email">Email: DH51903060@student.stu.edu.vn</string>
+    <string name="app_about_phone">SĐT: 0337803128</string>
+    <string name="app_about_map">...</string>
 </resources>
