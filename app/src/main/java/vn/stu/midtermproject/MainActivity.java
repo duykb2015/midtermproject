@@ -26,32 +26,33 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        checkLogin();
-        binding = ActivityMainBinding.inflate(getLayoutInflater());
-        setContentView(binding.getRoot());
-        replaceFragment(new HomeFragment());
-
-        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-            switch (item.getItemId()) {
-                case R.id.home:
-                    replaceFragment(new HomeFragment());
-                    break;
-                case R.id.profile:
-                    replaceFragment(new ProfileFragment());
-                    break;
-                case R.id.settings:
-                    replaceFragment(new SettingFragment());
-                    break;
-                default:
-                    break;
-            }
-            return true;
-        });
-
-
-        addControls();
-        addEvents();
-        copyDatabase();
+        setContentView(R.layout.activity_about);
+//        checkLogin();
+//        binding = ActivityMainBinding.inflate(getLayoutInflater());
+//        setContentView(binding.getRoot());
+//        replaceFragment(new HomeFragment());
+//
+//        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
+//            switch (item.getItemId()) {
+//                case R.id.home:
+//                    replaceFragment(new HomeFragment());
+//                    break;
+//                case R.id.profile:
+//                    replaceFragment(new ProfileFragment());
+//                    break;
+//                case R.id.settings:
+//                    replaceFragment(new SettingFragment());
+//                    break;
+//                default:
+//                    break;
+//            }
+//            return true;
+//        });
+//
+//
+//        addControls();
+//        addEvents();
+//        copyDatabase();
     }
 
     private void checkLogin() {
