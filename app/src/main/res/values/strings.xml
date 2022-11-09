@@ -26,6 +26,7 @@
     <string name="app_about_email">DH51903060@STUDENT.STU.EDU.VN</string>
     <string name="app_about_label_phone">Phone</string>
     <string name="app_about_phone">0337803128</string>
-    <string name="app_about_map">...</string>
-
+    <string name="app_about_label_map">Click to see</string>
+    <string name="app_about_map">Map</string>
+    <string name="app_public_key" translatable="false">pk.eyJ1ljoiYw52aW5obHVvbmciLCJhljoiY2w5bTcwcjJpMmM4djNwbW5waWZpYWRmdCJ9.9D7Bl7KYGE9zqlxw8KcLUw</string>
 </resources>

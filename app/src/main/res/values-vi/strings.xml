@@ -26,5 +26,6 @@
     <string name="app_about_email">DH51903060@STUDENT.STU.EDU.VN</string>
     <string name="app_about_label_phone">Số Điện Thoại</string>
     <string name="app_about_phone">0337803128</string>
-    <string name="app_about_map">...</string>
+    <string name="app_about_label_map">Nhấn vào để xem</string>
+    <string name="app_about_map">Bản Đồ</string>
 </resources>
