@@ -1,58 +1,37 @@
 package vn.stu.midtermproject;
 
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.view.ContextMenu;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
-import android.widget.ImageButton;
+import android.widget.AdapterView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 
-import vn.stu.midtermproject.databinding.ActivityMainBinding;
 import vn.stu.midtermproject.util.DBUtil;
 
 
 public class MainActivity extends AppCompatActivity {
     public final String DB_NAME = "doan.db";
     public final String PATH_SUFFIX = "/databases/";
-    ActivityMainBinding binding;
     long lastPress;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_about);
-//        checkLogin();
-//        binding = ActivityMainBinding.inflate(getLayoutInflater());
-//        setContentView(binding.getRoot());
-//        replaceFragment(new HomeFragment());
-//
-//        binding.bottomNavigationView.setOnItemSelectedListener(item -> {
-//            switch (item.getItemId()) {
-//                case R.id.home:
-//                    replaceFragment(new HomeFragment());
-//                    break;
-//                case R.id.profile:
-//                    replaceFragment(new ProfileFragment());
-//                    break;
-//                case R.id.settings:
-//                    replaceFragment(new SettingFragment());
-//                    break;
-//                default:
-//                    break;
-//            }
-//            return true;
-//        });
-//
-//
-//        addControls();
-//        addEvents();
-//        copyDatabase();
+//        setContentView(R.layout.activity_about);
+        checkLogin();
+        addControls();
+        addEvents();
+        copyDatabase();
     }
 
     private void checkLogin() {
@@ -78,11 +57,79 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    private void replaceFragment(Fragment fragment) {
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.replace(R.id.flMain, fragment);
-        fragmentTransaction.commit();
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mnAbout:
+                break;
+            case R.id.mnExit:
+                new AlertDialog.Builder(this).setTitle(R.string.app_dialog_title_exit)
+                        .setMessage(R.string.app_dialog_message_exit)
+                        .setPositiveButton(R.string.app_dialog_cancel, null )
+                        .setNeutralButton(
+                                R.string.app_dialog_confirm, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                        SharedPreferences.Editor editor = preferences.edit();
+                                        editor.remove("username");
+                                        editor.commit();
+                                        System.exit(0);
+                                        Toast.makeText(MainActivity.this, "Xoá dữ liệu thành công!", Toast.LENGTH_SHORT).show();
+                                    }
+                                })
+                        .create()
+                        .show();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
+        super.onCreateContextMenu(menu, v, menuInfo);
+        //R.id.lvProduct
+        if (v.getId() == 0) {
+            getMenuInflater().inflate(R.menu.menu_product, menu);
+        }
+    }
+
+    @Override
+    public boolean onContextItemSelected(@NonNull MenuItem item) {
+        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
+        Integer index = info.position;
+        switch (item.getItemId()) {
+            case R.id.mnEdit:
+                break;
+            case R.id.mnDelete:
+                new AlertDialog.Builder(this).setTitle("Xác nhận xoá")
+                        .setMessage("Bạn có chắc là muốn xoá đơn đặt phòng này?")
+                        .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface dialogInterface, int i) {
+//                                DuLieu.xoaDatPhong(index);
+//                                adapter.remove(DuLieu.layDatPhong(index));
+//                                adapter.notifyDataSetChanged();
+                                Toast.makeText(MainActivity.this, "Xoá dữ liệu thành công!", Toast.LENGTH_SHORT).show();
+                            }
+                        })
+                        .setNeutralButton("Huỷ", null)
+                        .create()
+                        .show();
+                break;
+            default:
+                break;
+        }
+
+        return super.onContextItemSelected(item);
     }
 
     private void copyDatabase() {

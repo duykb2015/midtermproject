@@ -27,6 +27,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity android:name=".ProductActivity"></activity>
         <activity android:name=".WelcomeActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
     </application>

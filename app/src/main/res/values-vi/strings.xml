@@ -11,6 +11,16 @@
     <string name="app_forget_password">Quên mật khẩu?</string>
     <string name="app_welcome_message">Chào mừng đến với Đồ Án Giữa Kì, đăng nhập để thực hiện các chức năng!</string>
     <string name="app_back">Trở lại</string>
+    <string name="app_menu_about">Thông tin phần mềm</string>
+    <string name="app_menu_exit">Thoát</string>
+    <string name="app_menu_add">Thêm</string>
+    <string name="app_menu_edit">Sửa</string>
+    <string name="app_menu_delete">Xoá</string>
+
+    <string name="app_dialog_title_exit">Xác nhận thoát</string>
+    <string name="app_dialog_message_exit">Bạn có chắc là bạn muốn đóng ứng dụng?</string>
+    <string name="app_dialog_confirm">Xác nhận</string>
+    <string name="app_dialog_cancel">Huỷ</string>
 
     <string name="app_login_success">Đăng nhập thành công!</string>
     <string name="app_login_fail">Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu!</string>
