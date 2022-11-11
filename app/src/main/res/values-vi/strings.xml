@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Đồ Án Giữa Kì</string>
     <string name="app_first_hello">Xin chào bạn!</string>
+    <string name="app_product">Quản Lý Sản Phẩm</string>
     <string name="app_login">Đăng nhập</string>
     <string name="app_register">Đăng ký</string>
     <string name="app_username">Tên đăng nhập</string>

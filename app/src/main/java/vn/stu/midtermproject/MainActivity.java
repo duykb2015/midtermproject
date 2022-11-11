@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
+import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.ContextMenu;
@@ -11,6 +12,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.ImageButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -23,6 +25,7 @@ public class MainActivity extends AppCompatActivity {
     public final String DB_NAME = "doan.db";
     public final String PATH_SUFFIX = "/databases/";
     long lastPress;
+    ImageButton btnProductManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -67,11 +70,13 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
             case R.id.mnAbout:
+                Intent intent = new Intent(MainActivity.this, AboutActivity.class);
+                startActivity(intent);
                 break;
             case R.id.mnExit:
                 new AlertDialog.Builder(this).setTitle(R.string.app_dialog_title_exit)
                         .setMessage(R.string.app_dialog_message_exit)
-                        .setPositiveButton(R.string.app_dialog_cancel, null )
+                        .setPositiveButton(R.string.app_dialog_cancel, null)
                         .setNeutralButton(
                                 R.string.app_dialog_confirm, new DialogInterface.OnClickListener() {
                                     @Override
@@ -137,7 +142,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-
+//        btnProductManagement.setOnClickListener(view -> {
+//        });
     }
 
     @Override
@@ -147,5 +153,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addControls() {
+        btnProductManagement = findViewById(R.id.btnProductManagement);
     }
 }

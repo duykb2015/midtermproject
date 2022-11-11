@@ -37,7 +37,6 @@ public class WelcomeActivity extends AppCompatActivity {
                 intent.putExtra("DB_NAME", DB_NAME);
                 intent.putExtra("PATH_SUFFIX", PATH_SUFFIX);
                 startActivity(intent);
-
             }
         });
     }

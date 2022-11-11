@@ -1,6 +1,7 @@
 <resources>
     <string name="app_name">Midterm Project</string>
     <string name="app_first_hello">Hi there!</string>
+    <string name="app_product">Product Management</string>
     <string name="app_login">Login</string>
     <string name="app_username">Username</string>
     <string name="app_password">Password</string>

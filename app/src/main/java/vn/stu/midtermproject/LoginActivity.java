@@ -6,6 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
+import android.telecom.Call;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.text.method.HideReturnsTransformationMethod;
@@ -167,5 +168,9 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("username", username);
         editor.commit();
     }
-
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        return;
+    }
 }
