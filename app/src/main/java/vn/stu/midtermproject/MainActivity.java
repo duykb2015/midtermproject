@@ -22,15 +22,12 @@ import vn.stu.midtermproject.util.DBUtil;
 
 
 public class MainActivity extends AppCompatActivity {
-    public final String DB_NAME = "doan.db";
-    public final String PATH_SUFFIX = "/databases/";
     long lastPress;
     ImageButton btnProductManagement;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-//        setContentView(R.layout.activity_about);
         checkLogin();
         addControls();
         addEvents();
@@ -40,9 +37,7 @@ public class MainActivity extends AppCompatActivity {
     private void checkLogin() {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         String username = preferences.getString("username", "");
-        SharedPreferences.Editor editor = preferences.edit();
-        editor.remove("username");
-        editor.commit();
+
         if (username.isEmpty()) {
             Intent intent = new Intent(MainActivity.this, WelcomeActivity.class);
             startActivity(intent);
@@ -138,7 +133,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void copyDatabase() {
-        DBUtil.copyDBFileFromAssets(MainActivity.this, DB_NAME, PATH_SUFFIX);
+        DBUtil.copyDBFileFromAssets(MainActivity.this);
     }
 
     private void addEvents() {

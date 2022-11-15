@@ -51,4 +51,9 @@ public class WelcomeActivity extends AppCompatActivity {
             finish();
         }
     }
+
+    @Override
+    public void onBackPressed() {
+
+    }
 }

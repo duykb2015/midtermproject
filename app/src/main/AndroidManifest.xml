@@ -16,7 +16,7 @@
         android:theme="@style/Theme.MidtermProject"
         tools:targetApi="31">
         <activity
-            android:name=".MainActivity"
+            android:name=".ProductActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -28,7 +28,7 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name=".ProductActivity"></activity>
+<!--        <activity android:name=".ProductActivity"></activity>-->
         <activity android:name=".WelcomeActivity"></activity>
         <activity android:name=".LoginActivity"></activity>
         <activity android:name=".AboutActivity"></activity>

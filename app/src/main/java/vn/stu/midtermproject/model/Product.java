@@ -13,7 +13,7 @@ public class Product {
     public Product() {
     }
 
-    public Product(int id, ProductLine productLine, int price, String name, Bitmap image, String netWeight) {
+    public Product(int id, String name, ProductLine productLine, Bitmap image, int price, String netWeight) {
         this.id = id;
         this.productLine = productLine;
         this.price = price;
@@ -68,5 +68,15 @@ public class Product {
 
     public void setNetWeight(String netWeight) {
         this.netWeight = netWeight;
+    }
+
+    @Override
+    public String toString() {
+        return "Mã: " + id + '\n' +
+                "Tên sản phẩm: " + name + '\n' +
+                "Dòng sản phẩm: " + productLine + '\n' +
+                "Giá: " + price + '\n' +
+                "Hình ảnh: " + image + '\n' +
+                "Khối lượng tịnh: " + netWeight;
     }
 }
