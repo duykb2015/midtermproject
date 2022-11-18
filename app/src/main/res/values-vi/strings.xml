@@ -17,11 +17,28 @@
     <string name="app_menu_add">Thêm</string>
     <string name="app_menu_edit">Sửa</string>
     <string name="app_menu_delete">Xoá</string>
+    <string name="app_menu_category">Danh mục</string>
+    <string name="app_menu_product">Sản phẩm</string>
+    <string name="app_button_save">Lưu</string>
 
     <string name="app_dialog_title_exit">Xác nhận thoát</string>
+    <string name="app_dialog_title_delete">Xác nhận xoá</string>
     <string name="app_dialog_message_exit">Bạn có chắc là bạn muốn đóng ứng dụng?</string>
+    <string name="app_dialog_message_delete">Bạn có chắc là bạn muốn xoá?</string>
+    <string name="app_dialog_success">Thành công</string>
+    <string name="app_dialog_fail">Thất bại</string>
     <string name="app_dialog_confirm">Xác nhận</string>
     <string name="app_dialog_cancel">Huỷ</string>
+
+    <string name="app_product_id">Mã</string>
+    <string name="app_product_name">Tên</string>
+    <string name="app_product_price">Giá</string>
+    <string name="app_product_net_weight">Khối lượng tịnh</string>
+    <string name="app_product_category_name">Danh mục</string>
+    <string name="app_product_category_origin">Xuất xứ</string>
+
+    <string name="app_picture_from_gallery">Chọn từ thư viện</string>
+    <string name="app_picture_from_camera">Chụp ảnh</string>
 
     <string name="app_login_success">Đăng nhập thành công!</string>
     <string name="app_login_fail">Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu!</string>

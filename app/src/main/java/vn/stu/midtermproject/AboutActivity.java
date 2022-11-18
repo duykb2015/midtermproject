@@ -21,7 +21,6 @@ public class AboutActivity extends AppCompatActivity {
     private static final String LOG_TAG = "AndroidExample";
 
     TextView tvPhone;
-    ImageButton btnBack, btnPhone;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -34,14 +33,10 @@ public class AboutActivity extends AppCompatActivity {
     }
 
     private void addControls() {
-        btnBack = findViewById(R.id.btnAboutBack);
         tvPhone = findViewById(R.id.tvAboutPhone);
     }
 
     private void addEvents() {
-        btnBack.setOnClickListener(view -> {
-            handleBack();
-        });
         tvPhone.setOnClickListener(view -> {
             handlePhoneCall();
         });
@@ -102,8 +97,5 @@ public class AboutActivity extends AppCompatActivity {
                 Toast.makeText(this, "Action Failed", Toast.LENGTH_LONG).show();
             }
         }
-    }
-
-    private void handleBack() {
     }
 }

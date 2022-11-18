@@ -4,7 +4,6 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.media.Image;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.view.ContextMenu;
@@ -28,10 +27,11 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        copyDatabase();
         checkLogin();
         addControls();
         addEvents();
-        copyDatabase();
     }
 
     private void checkLogin() {
@@ -81,7 +81,6 @@ public class MainActivity extends AppCompatActivity {
                                         editor.remove("username");
                                         editor.commit();
                                         System.exit(0);
-                                        Toast.makeText(MainActivity.this, "Xoá dữ liệu thành công!", Toast.LENGTH_SHORT).show();
                                     }
                                 })
                         .create()
@@ -93,61 +92,31 @@ public class MainActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
-    @Override
-    public void onCreateContextMenu(ContextMenu menu, View v, ContextMenu.ContextMenuInfo menuInfo) {
-        super.onCreateContextMenu(menu, v, menuInfo);
-        //R.id.lvProduct
-        if (v.getId() == 0) {
-            getMenuInflater().inflate(R.menu.menu_product, menu);
-        }
-    }
 
     @Override
-    public boolean onContextItemSelected(@NonNull MenuItem item) {
-        AdapterView.AdapterContextMenuInfo info = (AdapterView.AdapterContextMenuInfo) item.getMenuInfo();
-        Integer index = info.position;
-        switch (item.getItemId()) {
-            case R.id.mnEdit:
-                break;
-            case R.id.mnDelete:
-                new AlertDialog.Builder(this).setTitle("Xác nhận xoá")
-                        .setMessage("Bạn có chắc là muốn xoá đơn đặt phòng này?")
-                        .setPositiveButton("Đồng ý", new DialogInterface.OnClickListener() {
-                            @Override
-                            public void onClick(DialogInterface dialogInterface, int i) {
-//                                DuLieu.xoaDatPhong(index);
-//                                adapter.remove(DuLieu.layDatPhong(index));
-//                                adapter.notifyDataSetChanged();
-                                Toast.makeText(MainActivity.this, "Xoá dữ liệu thành công!", Toast.LENGTH_SHORT).show();
-                            }
-                        })
-                        .setNeutralButton("Huỷ", null)
-                        .create()
-                        .show();
-                break;
-            default:
-                break;
-        }
-
-        return super.onContextItemSelected(item);
+    protected void onResume() {
+        super.onResume();
     }
 
     private void copyDatabase() {
         DBUtil.copyDBFileFromAssets(MainActivity.this);
     }
 
-    private void addEvents() {
-//        btnProductManagement.setOnClickListener(view -> {
-//        });
-    }
-
-    @Override
-    protected void onResume() {
-        super.onResume();
-
-    }
-
     private void addControls() {
         btnProductManagement = findViewById(R.id.btnProductManagement);
+    }
+
+    private void addEvents() {
+        btnProductManagement.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                handleManageProduct();
+            }
+        });
+    }
+
+    private void handleManageProduct() {
+        Intent intent = new Intent(MainActivity.this, ProductActivity.class);
+        startActivity(intent);
     }
 }

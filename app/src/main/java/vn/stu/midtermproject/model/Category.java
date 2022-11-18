@@ -1,20 +1,18 @@
 package vn.stu.midtermproject.model;
 
-public class ProductLine {
+public class Category {
 
     private int id;
     private String name;
-    private String origin;
-    private String manufacturer;
+    private String origin; //Xuất sứ
 
-    public ProductLine() {
+    public Category() {
     }
 
-    public ProductLine(int id, String name, String origin, String manufacturer) {
+    public Category(int id, String name, String origin) {
         this.id = id;
         this.name = name;
         this.origin = origin;
-        this.manufacturer = manufacturer;
     }
 
     public int getId() {
@@ -41,11 +39,8 @@ public class ProductLine {
         this.origin = origin;
     }
 
-    public String getManufacturer() {
-        return manufacturer;
-    }
-
-    public void setManufacturer(String manufacturer) {
-        this.manufacturer = manufacturer;
+    @Override
+    public String toString() {
+        return name;
     }
 }

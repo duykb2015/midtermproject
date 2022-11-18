@@ -139,9 +139,7 @@ public class LoginActivity extends AppCompatActivity {
         if (username.equals(dbUsername)) {
             if (password.equals(dbPassword)) {
                 Toast.makeText(this, R.string.app_login_success, Toast.LENGTH_SHORT).show();
-
                 saveUsernamePreferences(dbUsername);
-
                 cursor.close();
                 database.close();
                 finish();

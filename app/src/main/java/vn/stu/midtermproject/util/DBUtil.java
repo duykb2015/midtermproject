@@ -5,17 +5,18 @@ import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.Fragment;
 
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-public class DBUtil extends AppCompatActivity {
-    private static String DB_NAME = "doan.db";
-    private static String PATH_SUFFIX = "/databases/";
+public class DBUtil {
+    final static String DB_NAME = "doan.db";
+    final static String PATH_SUFFIX = "/databases/";
 
-    public static void copyDBFileFromAssets(Activity context) {
+    public static void copyDBFileFromAssets(Context context) {
         File dbFile = context.getDatabasePath(DB_NAME);
         if (dbFile.exists()) {
             return;
@@ -45,5 +46,9 @@ public class DBUtil extends AppCompatActivity {
 
     public static SQLiteDatabase openOrCreateDataBases(Activity context) {
         return SQLiteDatabase.openOrCreateDatabase(context.getApplicationInfo().dataDir + PATH_SUFFIX + DB_NAME, null);
+    }
+
+    public static SQLiteDatabase openOrCreateDataBases(Fragment context) {
+        return SQLiteDatabase.openOrCreateDatabase(context.getActivity().getDataDir() + PATH_SUFFIX + DB_NAME, null);
     }
 }

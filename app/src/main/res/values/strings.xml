@@ -15,15 +15,23 @@
     <string name="app_login_success">Login successfully!</string>
     <string name="app_login_fail">Login fail, please check your username and password again!</string>
     <string name="app_empty_info">The field cannot be empty</string>
-    
+
     <string name="app_menu_about">About</string>
     <string name="app_menu_exit">Exit</string>
     <string name="app_menu_add">Add</string>
     <string name="app_menu_edit">Edit</string>
     <string name="app_menu_delete">Delete</string>
+    <string name="app_button_save">Save</string>
 
+    <string name="app_picture_from_gallery">Choose From Gallery</string>
+    <string name="app_picture_from_camera">From Camera</string>
+    
     <string name="app_dialog_title_exit">Confirm Exit</string>
+    <string name="app_dialog_title_delete">Confirm Delete</string>
     <string name="app_dialog_message_exit">Are you sure you want to quit?</string>
+    <string name="app_dialog_message_delete">Are you sure you want to delete this item?</string>
+    <string name="app_dialog_success">Success</string>
+    <string name="app_dialog_fail">Fail</string>
     <string name="app_dialog_confirm">Confirm</string>
     <string name="app_dialog_cancel">Cancel</string>
 
@@ -40,6 +48,17 @@
     <string name="app_about_label_phone">Phone</string>
     <string name="app_about_phone">0337803128</string>
     <string name="app_about_label_map">Click to see</string>
+
+    <string name="app_menu_category">Category</string>
+    <string name="app_menu_product">Product</string>
+
+    <string name="app_product_id">ID</string>
+    <string name="app_product_name">Name</string>
+    <string name="app_product_price">Price</string>
+    <string name="app_product_net_weight">Net Weight</string>
+    <string name="app_product_category_name">Category</string>
+    <string name="app_product_category_origin">Origin</string>
+    
     <string name="app_about_map">Map</string>
     <string name="app_public_key" translatable="false">pk.eyJ1ljoiYw52aW5obHVvbmciLCJhljoiY2w5bTcwcjJpMmM4djNwbW5waWZpYWRmdCJ9.9D7Bl7KYGE9zqlxw8KcLUw</string>
 </resources>
