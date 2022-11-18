@@ -1,4 +1,11 @@
 <resources>
+    <string name="font_family_light" translatable="false">sans-serif-light</string>
+    <string name="font_family_medium" translatable="false">sans-serif-medium</string>
+    <string name="font_family_regular" translatable="false">sans-serif</string>
+    <string name="font_family_condensed" translatable="false">sans-serif-condensed</string>
+    <string name="font_family_black" translatable="false">sans-serif-black</string>
+    <string name="font_family_thin" translatable="false">sans-serif-thin</string>
+
     <string name="app_name">Midterm Project</string>
     <string name="app_first_hello">Hi there!</string>
     <string name="app_product">Product Management</string>
@@ -25,7 +32,7 @@
 
     <string name="app_picture_from_gallery">Choose From Gallery</string>
     <string name="app_picture_from_camera">From Camera</string>
-    
+
     <string name="app_dialog_title_exit">Confirm Exit</string>
     <string name="app_dialog_title_delete">Confirm Delete</string>
     <string name="app_dialog_message_exit">Are you sure you want to quit?</string>
@@ -58,7 +65,7 @@
     <string name="app_product_net_weight">Net Weight</string>
     <string name="app_product_category_name">Category</string>
     <string name="app_product_category_origin">Origin</string>
-    
+
     <string name="app_about_map">Map</string>
     <string name="app_public_key" translatable="false">pk.eyJ1ljoiYw52aW5obHVvbmciLCJhljoiY2w5bTcwcjJpMmM4djNwbW5waWZpYWRmdCJ9.9D7Bl7KYGE9zqlxw8KcLUw</string>
 </resources>
