@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Đồ Án Giữa Kì</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYW52aW5obHVvbmciLCJhIjoiY2w5bTcwcjJpMmM4djNwbW5waWZpYWRmdCJ9.9D7BI7KYGE9zqlxw8KcLUw</string>
+    <string name="app_name">Quản lý sản phẩm</string>
     <string name="app_first_hello">Xin chào bạn!</string>
     <string name="app_product">Quản Lý Sản Phẩm</string>
     <string name="app_login">Đăng nhập</string>

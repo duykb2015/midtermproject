@@ -206,6 +206,7 @@
                 android:background="@drawable/button_background_green2">
 
                 <TextView
+                    android:id="@+id/tvMap"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:layout_marginHorizontal="20dp"
