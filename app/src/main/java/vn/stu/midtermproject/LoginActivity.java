@@ -88,25 +88,17 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-        btnShowHidePass.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                if (btnShowHidePass.getTag().toString() == getString(R.string.app_show_password)) {
-                    edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
-                    btnShowHidePass.setTag(getString(R.string.app_hide_password));
-                } else {
-                    edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                    btnShowHidePass.setTag(getString(R.string.app_show_password));
-                }
+        btnShowHidePass.setOnClickListener(view -> {
+            if (btnShowHidePass.getTag().toString().equals(getString(R.string.app_show_password))) {
+                edtPassword.setTransformationMethod(HideReturnsTransformationMethod.getInstance());
+                btnShowHidePass.setTag(getString(R.string.app_hide_password));
+            } else {
+                edtPassword.setTransformationMethod(PasswordTransformationMethod.getInstance());
+                btnShowHidePass.setTag(getString(R.string.app_show_password));
             }
         });
 
-        btnLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleLogin();
-            }
-        });
+        btnLogin.setOnClickListener(view -> handleLogin());
     }
 
     private void handleLogin() {
@@ -155,7 +147,7 @@ public class LoginActivity extends AppCompatActivity {
         SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
         SharedPreferences.Editor editor = preferences.edit();
         editor.putString("username", username);
-        editor.commit();
+        editor.apply();
     }
 
 }

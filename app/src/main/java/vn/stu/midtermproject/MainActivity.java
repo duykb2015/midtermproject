@@ -1,16 +1,15 @@
 package vn.stu.midtermproject;
 
+import android.annotation.SuppressLint;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
-import android.view.ContextMenu;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
@@ -61,6 +60,7 @@ public class MainActivity extends AppCompatActivity {
         return super.onCreateOptionsMenu(menu);
     }
 
+    @SuppressLint("NonConstantResourceId")
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         switch (item.getItemId()) {
@@ -73,15 +73,12 @@ public class MainActivity extends AppCompatActivity {
                         .setMessage(R.string.app_dialog_message_exit)
                         .setPositiveButton(R.string.app_dialog_cancel, null)
                         .setNeutralButton(
-                                R.string.app_dialog_confirm, new DialogInterface.OnClickListener() {
-                                    @Override
-                                    public void onClick(DialogInterface dialogInterface, int i) {
-                                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
-                                        SharedPreferences.Editor editor = preferences.edit();
-                                        editor.remove("username");
-                                        editor.commit();
-                                        System.exit(0);
-                                    }
+                                R.string.app_dialog_confirm, (dialogInterface, i) -> {
+                                    SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                    SharedPreferences.Editor editor = preferences.edit();
+                                    editor.remove("username");
+                                    editor.commit();
+                                    System.exit(0);
                                 })
                         .create()
                         .show();
@@ -107,12 +104,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void addEvents() {
-        btnProductManagement.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                handleManageProduct();
-            }
-        });
+        btnProductManagement.setOnClickListener(view -> handleManageProduct());
     }
 
     private void handleManageProduct() {

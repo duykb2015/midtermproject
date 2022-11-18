@@ -1,16 +1,23 @@
 package vn.stu.midtermproject;
 
+import android.annotation.SuppressLint;
+import android.app.AlertDialog;
 import android.content.ContentValues;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.provider.MediaStore;
 import android.text.Editable;
 import android.text.TextWatcher;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -21,6 +28,7 @@ import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -52,13 +60,49 @@ public class ProductManagementActivity extends AppCompatActivity {
 
         addControls();
         Intent intent = getIntent();
-        int productID = intent.getIntExtra("product", 0);
-        if (productID != 0) {
-            loadProductData(productID);
+        int oldProductID = intent.getIntExtra("product", 0);
+        if (oldProductID != 0) {
+            loadProductData(oldProductID);
         }
         addEvents();
+    }
 
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return super.onCreateOptionsMenu(menu);
+    }
 
+    @SuppressLint("NonConstantResourceId")
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        switch (item.getItemId()) {
+            case R.id.mnAbout:
+                Intent intent = new Intent(ProductManagementActivity.this, AboutActivity.class);
+                startActivity(intent);
+                break;
+            case R.id.mnExit:
+                new AlertDialog.Builder(this).setTitle(R.string.app_dialog_title_exit)
+                        .setMessage(R.string.app_dialog_message_exit)
+                        .setPositiveButton(R.string.app_dialog_cancel, null)
+                        .setNeutralButton(
+                                R.string.app_dialog_confirm, new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface dialogInterface, int i) {
+                                        SharedPreferences preferences = PreferenceManager.getDefaultSharedPreferences(getApplicationContext());
+                                        SharedPreferences.Editor editor = preferences.edit();
+                                        editor.remove("username");
+                                        editor.commit();
+                                        System.exit(0);
+                                    }
+                                })
+                        .create()
+                        .show();
+                break;
+            default:
+                break;
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     private void addControls() {
@@ -71,14 +115,14 @@ public class ProductManagementActivity extends AppCompatActivity {
         tvProductCurrency = findViewById(R.id.tvProductCurrency);
         tvProductUnit = findViewById(R.id.tvProductUnit);
         spnProductCategory = findViewById(R.id.spnProductCategory);
-        btnSave = findViewById(R.id.btnSave);
+        btnSave = findViewById(R.id.btnSaveProduct);
         btnSave.setEnabled(false);
     }
 
+    @SuppressLint("SetTextI18n")
     private void loadProductData(Integer ID) {
         SQLiteDatabase database = DBUtil.openOrCreateDataBases(ProductManagementActivity.this);
         Cursor cursor = database.rawQuery("SELECT * FROM product WHERE id = ?", new String[]{ID + ""});
-
         cursor.moveToFirst();
 
         productID = cursor.getInt(0);
@@ -95,9 +139,7 @@ public class ProductManagementActivity extends AppCompatActivity {
         ivProductImage.setImageBitmap(image);
         edtProductPrice.setText(cursor.getInt(4) + "");
         edtProductNetWeight.setText(cursor.getString(5));
-
-        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getAllCategory());
-        spnProductCategory.setAdapter(adapter);
+        cursor.close();
     }
 
     private Category getCategory(int id) {
@@ -105,6 +147,7 @@ public class ProductManagementActivity extends AppCompatActivity {
         Cursor cursor = database.rawQuery("SELECT * FROM category WHERE id = ?", new String[]{id + ""});
         cursor.moveToFirst();
         Category category = new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2));
+        cursor.close();
         return category;
     }
 
@@ -112,13 +155,17 @@ public class ProductManagementActivity extends AppCompatActivity {
         SQLiteDatabase database = DBUtil.openOrCreateDataBases(ProductManagementActivity.this);
         Cursor cursor = database.rawQuery("SELECT * FROM category", null);
         ArrayList<Category> list = new ArrayList<>();
+        list.add(new Category());
         while (cursor.moveToNext()) {
             list.add(new Category(cursor.getInt(0), cursor.getString(1), cursor.getString(2)));
         }
+        cursor.close();
         return list;
     }
 
     private void addEvents() {
+        adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, getAllCategory());
+        spnProductCategory.setAdapter(adapter);
         edtProductName.addTextChangedListener(new TextWatcher() {
             @Override
             public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
@@ -161,80 +208,90 @@ public class ProductManagementActivity extends AppCompatActivity {
                 btnSave.setEnabled(true);
             }
         });
-        tvProductCurrency.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                edtProductPrice.requestFocus(View.FOCUS_LEFT);
-            }
-        });
-        tvProductUnit.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                edtProductNetWeight.requestFocus(View.FOCUS_LEFT);
-            }
-        });
-        ivProductImage.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                btnSave.setEnabled(true);
-                imageChooser();
-                Toast.makeText(ProductManagementActivity.this, "Wait", Toast.LENGTH_SHORT).show();
-                return;
-            }
+        tvProductCurrency.setOnClickListener(view -> edtProductPrice.requestFocus(View.FOCUS_LEFT));
+        tvProductUnit.setOnClickListener(view -> edtProductNetWeight.requestFocus(View.FOCUS_LEFT));
+        ivProductImage.setOnClickListener(view -> {
+            btnSave.setEnabled(true);
+            imageChooser();
         });
 
         spnProductCategory.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
             public void onItemSelected(AdapterView<?> adapterView, View view, int i, long l) {
-                if (flag == false) {
+
+                if (!flag) {
+                    if (categoryID != null) {
+                        spnProductCategory.setSelection(categoryID);
+                    }
                     flag = true;
                 } else {
+                    if (i == 0) {
+                        return;
+                    }
                     btnSave.setEnabled(true);
                     categoryID = adapter.getItem(i).getId();
+                    tvCategoryName.setText(adapter.getItem(i).getName());
+                    tvProductCategoryOrigin.setText(adapter.getItem(i).getOrigin());
                 }
-
             }
 
             @Override
             public void onNothingSelected(AdapterView<?> adapterView) {
-                return;
             }
         });
 
-        btnSave.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                saveOrUpdate();
-                btnSave.setEnabled(false);
-            }
+        btnSave.setOnClickListener(view -> {
+            saveOrUpdate();
+            btnSave.setEnabled(false);
         });
     }
 
     private void saveOrUpdate() {
-        if (productID == null) {
-            insertData();
-            return;
-        }
-        updateData();
-    }
-
-    private void updateData() {
         String productName = edtProductName.getText().toString();
         String productPrice = edtProductPrice.getText().toString();
         String productNetWeight = edtProductNetWeight.getText().toString();
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
-        byte[] simple = stream.toByteArray();
-
         ContentValues values = new ContentValues();
+        if (selectedImage != null) {
+            ByteArrayOutputStream stream = new ByteArrayOutputStream();
+            selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            byte[] simple = stream.toByteArray();
+            values.put("image", simple);
+        }
         values.put("name", productName);
-        values.put("image", simple);
+        values.put("price", productPrice);
+        values.put("netweight", productNetWeight);
 
-        SQLiteDatabase database = DBUtil.openOrCreateDataBases(ProductManagementActivity.this);
-        database.update(table, values, null, null);
+        if (values.get("name") == null || values.get("price") == null || values.get("netweight") == null) {
+            Toast.makeText(this, getString(R.string.app_empty_info), Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        if (categoryID != null) {
+            values.put("category_id", categoryID);
+        }
+        if (productID == null) {
+            if (values.get("category_id") == null) {
+                Toast.makeText(this, getString(R.string.app_empty_info), Toast.LENGTH_SHORT).show();
+                return;
+            }
+            insertData(values);
+            return;
+        }
+        updateData(values);
+
     }
 
-    private void insertData() {
+    private void updateData(ContentValues values) {
+        SQLiteDatabase database = DBUtil.openOrCreateDataBases(ProductManagementActivity.this);
+        database.update(table, values, "id = ?", new String[]{productID + ""});
+        Toast.makeText(this, R.string.app_product_saved, Toast.LENGTH_SHORT).show();
+    }
+
+    private void insertData(ContentValues values) {
+        SQLiteDatabase database = DBUtil.openOrCreateDataBases(ProductManagementActivity.this);
+        database.insert(table, null, values);
+        Toast.makeText(this, R.string.app_product_saved, Toast.LENGTH_SHORT).show();
+        finish();
     }
 
     private void imageChooser() {
@@ -249,6 +306,7 @@ public class ProductManagementActivity extends AppCompatActivity {
         super.onActivityResult(requestCode, resultCode, data);
         if (resultCode == RESULT_OK) {
             if (requestCode == SELECT_PICTURE) {
+                assert data != null;
                 Uri selectedImageUri = data.getData();
                 if (null != selectedImageUri) {
                     try {
@@ -261,4 +319,5 @@ public class ProductManagementActivity extends AppCompatActivity {
             }
         }
     }
+
 }

@@ -29,6 +29,7 @@
     <string name="app_dialog_fail">Thất bại</string>
     <string name="app_dialog_confirm">Xác nhận</string>
     <string name="app_dialog_cancel">Huỷ</string>
+    <string name="app_product_saved">Đã lưu</string>
 
     <string name="app_product_id">Mã</string>
     <string name="app_product_name">Tên</string>
