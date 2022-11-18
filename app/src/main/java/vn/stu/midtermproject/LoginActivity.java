@@ -1,6 +1,5 @@
 package vn.stu.midtermproject;
 
-import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -19,13 +18,14 @@ import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import vn.stu.midtermproject.util.DBUtil;
+
 public class LoginActivity extends AppCompatActivity {
     EditText edtUsername, edtPassword;
     TextView tvUsername, tvPassword;
     ImageButton btnLogin, btnShowHidePass;
-    Intent intent;
 
-    String DB_NAME, PATH_SUFFIX, TABLE;
+    private String TABLE;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -44,14 +44,6 @@ public class LoginActivity extends AppCompatActivity {
         tvPassword = findViewById(R.id.tvPassword);
         btnLogin = findViewById(R.id.btnLoginActivity);
         btnShowHidePass = findViewById(R.id.btn_show_hide_pass);
-
-        intent = getIntent();
-        if (intent.hasExtra("DB_NAME")) {
-            DB_NAME = intent.getStringExtra("DB_NAME");
-        }
-        if (intent.hasExtra("PATH_SUFFIX")) {
-            PATH_SUFFIX = intent.getStringExtra("PATH_SUFFIX");
-        }
 
         TABLE = "user";
     }
@@ -127,7 +119,7 @@ public class LoginActivity extends AppCompatActivity {
             return;
         }
 
-        SQLiteDatabase database = openOrCreateDatabase(DB_NAME, MODE_PRIVATE, null);
+        SQLiteDatabase database = DBUtil.openOrCreateDataBases(LoginActivity.this);
         Cursor cursor = database.query(
                 TABLE,
                 new String[]{"username", "password"},
@@ -147,9 +139,7 @@ public class LoginActivity extends AppCompatActivity {
         if (username.equals(dbUsername)) {
             if (password.equals(dbPassword)) {
                 Toast.makeText(this, R.string.app_login_success, Toast.LENGTH_SHORT).show();
-
                 saveUsernamePreferences(dbUsername);
-
                 cursor.close();
                 database.close();
                 finish();

@@ -4,18 +4,18 @@ import android.graphics.Bitmap;
 
 public class Product {
     private int id;
-    private ProductLine productLine;
-    private int price;
     private String name;
+    private Category category;
     private Bitmap image;
+    private int price;
     private String netWeight;
 
     public Product() {
     }
 
-    public Product(int id, ProductLine productLine, int price, String name, Bitmap image, String netWeight) {
+    public Product(int id, String name, Category category, Bitmap image, int price, String netWeight) {
         this.id = id;
-        this.productLine = productLine;
+        this.category = category;
         this.price = price;
         this.name = name;
         this.image = image;
@@ -30,12 +30,12 @@ public class Product {
         this.id = id;
     }
 
-    public ProductLine getProductLine() {
-        return productLine;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setProductLine(ProductLine productLine) {
-        this.productLine = productLine;
+    public void setCategory(Category category) {
+        this.category = category;
     }
 
     public int getPrice() {
@@ -68,5 +68,15 @@ public class Product {
 
     public void setNetWeight(String netWeight) {
         this.netWeight = netWeight;
+    }
+
+    @Override
+    public String toString() {
+        return "Mã: " + id + '\n' +
+                "Tên sản phẩm: " + name + '\n' +
+                "Dòng sản phẩm: " + category + '\n' +
+                "Giá: " + price + '\n' +
+                "Hình ảnh: " + image + '\n' +
+                "Khối lượng tịnh: " + netWeight;
     }
 }

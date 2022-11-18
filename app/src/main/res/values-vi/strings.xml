@@ -2,6 +2,7 @@
 <resources>
     <string name="app_name">Đồ Án Giữa Kì</string>
     <string name="app_first_hello">Xin chào bạn!</string>
+    <string name="app_product">Quản Lý Sản Phẩm</string>
     <string name="app_login">Đăng nhập</string>
     <string name="app_register">Đăng ký</string>
     <string name="app_username">Tên đăng nhập</string>
@@ -10,8 +11,49 @@
     <string name="app_hide_password">Ẩn</string>
     <string name="app_forget_password">Quên mật khẩu?</string>
     <string name="app_welcome_message">Chào mừng đến với Đồ Án Giữa Kì, đăng nhập để thực hiện các chức năng!</string>
+    <string name="app_back">Trở lại</string>
+    <string name="app_menu_about">Thông tin phần mềm</string>
+    <string name="app_menu_exit">Thoát</string>
+    <string name="app_menu_add">Thêm</string>
+    <string name="app_menu_edit">Sửa</string>
+    <string name="app_menu_delete">Xoá</string>
+    <string name="app_menu_category">Danh mục</string>
+    <string name="app_menu_product">Sản phẩm</string>
+    <string name="app_button_save">Lưu</string>
+
+    <string name="app_dialog_title_exit">Xác nhận thoát</string>
+    <string name="app_dialog_title_delete">Xác nhận xoá</string>
+    <string name="app_dialog_message_exit">Bạn có chắc là bạn muốn đóng ứng dụng?</string>
+    <string name="app_dialog_message_delete">Bạn có chắc là bạn muốn xoá?</string>
+    <string name="app_dialog_success">Thành công</string>
+    <string name="app_dialog_fail">Thất bại</string>
+    <string name="app_dialog_confirm">Xác nhận</string>
+    <string name="app_dialog_cancel">Huỷ</string>
+
+    <string name="app_product_id">Mã</string>
+    <string name="app_product_name">Tên</string>
+    <string name="app_product_price">Giá</string>
+    <string name="app_product_net_weight">Khối lượng tịnh</string>
+    <string name="app_product_category_name">Danh mục</string>
+    <string name="app_product_category_origin">Xuất xứ</string>
+
+    <string name="app_picture_from_gallery">Chọn từ thư viện</string>
+    <string name="app_picture_from_camera">Chụp ảnh</string>
 
     <string name="app_login_success">Đăng nhập thành công!</string>
     <string name="app_login_fail">Đăng nhập thất bại, vui lòng kiểm tra lại tài khoản và mật khẩu!</string>
     <string name="app_empty_info">Không được bỏ trống thông tin</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_about_header">Giới thiệu về bản thân</string>
+    <string name="app_about_name">Bế Lãng Duy</string>
+    <string name="app_about_label_class">Lớp</string>
+    <string name="app_about_class">D19_TH03</string>
+    <string name="app_about_label_sid">Mã Sinh Viên</string>
+    <string name="app_about_sid">DH51903060</string>
+    <string name="app_about_label_email">Email</string>
+    <string name="app_about_email">DH51903060@STUDENT.STU.EDU.VN</string>
+    <string name="app_about_label_phone">Số Điện Thoại</string>
+    <string name="app_about_phone">0337803128</string>
+    <string name="app_about_label_map">Nhấn vào để xem</string>
+    <string name="app_about_map">Bản Đồ</string>
 </resources>
