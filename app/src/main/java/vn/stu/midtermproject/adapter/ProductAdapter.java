@@ -1,5 +1,6 @@
 package vn.stu.midtermproject.adapter;
 
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -28,6 +29,7 @@ public class ProductAdapter extends ArrayAdapter<Product> {
         this.objects = objects;
     }
 
+    @SuppressLint({"InflateParams", "ViewHolder", "SetTextI18n"})
     @NonNull
     @Override
     public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
