@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="app_name">Đồ Án Giữa Kì</string>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYW52aW5obHVvbmciLCJhIjoiY2w5bTcwcjJpMmM4djNwbW5waWZpYWRmdCJ9.9D7BI7KYGE9zqlxw8KcLUw</string>
+    <string name="app_name">Quản lý sản phẩm</string>
     <string name="app_first_hello">Xin chào bạn!</string>
     <string name="app_product">Quản Lý Sản Phẩm</string>
     <string name="app_login">Đăng nhập</string>
@@ -20,6 +21,9 @@
     <string name="app_menu_category">Danh mục</string>
     <string name="app_menu_product">Sản phẩm</string>
     <string name="app_button_save">Lưu</string>
+    <string name="app_click_to_choose_image">Nhấn để chọn hình ảnh</string>
+    <string name="app_main_title">Trang chủ</string>
+    <string name="app_file_to_large">Tệp quá lớn, vui lòng chọn một tệp khác (Kính thước ảnh tối đa là 1000x1000, và phải nhẹ hơn 1MB)</string>
 
     <string name="app_dialog_title_exit">Xác nhận thoát</string>
     <string name="app_dialog_title_delete">Xác nhận xoá</string>

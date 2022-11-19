@@ -1,4 +1,5 @@
 <resources>
+    <string name="mapbox_access_token">pk.eyJ1IjoiYW52aW5obHVvbmciLCJhIjoiY2w5bTcwcjJpMmM4djNwbW5waWZpYWRmdCJ9.9D7BI7KYGE9zqlxw8KcLUw</string>
     <string name="font_family_light" translatable="false">sans-serif-light</string>
     <string name="font_family_medium" translatable="false">sans-serif-medium</string>
     <string name="font_family_regular" translatable="false">sans-serif</string>
@@ -6,7 +7,10 @@
     <string name="font_family_black" translatable="false">sans-serif-black</string>
     <string name="font_family_thin" translatable="false">sans-serif-thin</string>
 
-    <string name="app_name">Midterm Project</string>
+    <string name="app_main_title">Home</string>
+    <string name="app_file_to_large">File to large, please choose another file (Max width and height are 1000pixels, size must less than 1MB)</string>
+    <string name="app_click_to_choose_image">Click to choose image</string>
+    <string name="app_name">Product Management</string>
     <string name="app_first_hello">Hi there!</string>
     <string name="app_product">Product Management</string>
     <string name="app_login">Login</string>
@@ -18,7 +22,7 @@
     <string name="app_forget_password">Forget Password?</string>
     <string name="app_welcome_message">Welcome, login to start new session!</string>
     <string name="app_back">Back</string>
-    
+
     <string name="app_product_saved">Saved</string>
 
     <string name="app_login_success">Login successfully!</string>

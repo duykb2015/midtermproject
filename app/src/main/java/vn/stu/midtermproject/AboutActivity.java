@@ -18,7 +18,7 @@ public class AboutActivity extends AppCompatActivity {
     private static final int REQUEST_CODE = 555;
     private static final String LOG_TAG = "AndroidExample";
 
-    TextView tvPhone;
+    TextView tvPhone, tvMap;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -32,10 +32,15 @@ public class AboutActivity extends AppCompatActivity {
 
     private void addControls() {
         tvPhone = findViewById(R.id.tvAboutPhone);
+        tvMap = findViewById(R.id.tvMap);
     }
 
     private void addEvents() {
         tvPhone.setOnClickListener(view -> handlePhoneCall());
+        tvMap.setOnClickListener(view -> {
+            Intent intent = new Intent(AboutActivity.this, MapActivity.class);
+            startActivity(intent);
+        });
     }
 
     private void handlePhoneCall() {

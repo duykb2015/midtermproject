@@ -42,7 +42,7 @@ import vn.stu.midtermproject.util.DBUtil;
 public class ProductManagementActivity extends AppCompatActivity {
     Integer productID, categoryID;
     EditText edtProductName, edtProductNetWeight, edtProductPrice;
-    TextView tvCategoryName, tvProductCategoryOrigin, tvProductCurrency, tvProductUnit;
+    TextView tvCategoryName, tvProductCategoryOrigin, tvProductCurrency, tvProductUnit, tvChooseImage;
     ImageView ivProductImage;
     ImageButton btnSave;
     Spinner spnProductCategory;
@@ -115,6 +115,7 @@ public class ProductManagementActivity extends AppCompatActivity {
         tvProductCurrency = findViewById(R.id.tvProductCurrency);
         tvProductUnit = findViewById(R.id.tvProductUnit);
         spnProductCategory = findViewById(R.id.spnProductCategory);
+        tvChooseImage = findViewById(R.id.tvChooseImage);
         btnSave = findViewById(R.id.btnSaveProduct);
         btnSave.setEnabled(false);
     }
@@ -135,6 +136,9 @@ public class ProductManagementActivity extends AppCompatActivity {
         Bitmap image = null;
         if (bytes != null) {
             image = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+        }
+        if (image != null) {
+            tvChooseImage.setText("");
         }
         ivProductImage.setImageBitmap(image);
         edtProductPrice.setText(cursor.getInt(4) + "");
@@ -253,7 +257,7 @@ public class ProductManagementActivity extends AppCompatActivity {
         ContentValues values = new ContentValues();
         if (selectedImage != null) {
             ByteArrayOutputStream stream = new ByteArrayOutputStream();
-            selectedImage.compress(Bitmap.CompressFormat.PNG, 100, stream);
+            selectedImage.compress(Bitmap.CompressFormat.JPEG, 85, stream);
             byte[] simple = stream.toByteArray();
             values.put("image", simple);
         }
@@ -308,12 +312,22 @@ public class ProductManagementActivity extends AppCompatActivity {
             if (requestCode == SELECT_PICTURE) {
                 assert data != null;
                 Uri selectedImageUri = data.getData();
+
                 if (null != selectedImageUri) {
                     try {
                         selectedImage = MediaStore.Images.Media.getBitmap(this.getContentResolver(), selectedImageUri);
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+                    int width = selectedImage.getWidth();
+                    int height = selectedImage.getHeight();
+                    long size = selectedImage.getByteCount();
+                    if (width > 1000 || height > 1000 || size > 10000000) {
+                        Toast.makeText(this, getString(R.string.app_file_to_large), Toast.LENGTH_SHORT).show();
+                        selectedImage.recycle();
+                        return;
+                    }
+                    tvChooseImage.setText("");
                     ivProductImage.setImageURI(selectedImageUri);
                 }
             }
