@@ -11,10 +11,19 @@
         android:layout_height="120dp"
         android:layout_marginTop="20dp"
         android:padding="5dp"
-        android:src="@drawable/avatar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/tvChooseImage"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/app_click_to_choose_image"
+        app:layout_constraintBottom_toBottomOf="@+id/ivProductImage"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/ivProductImage" />
 
     <EditText
         android:id="@+id/edtProductName"
