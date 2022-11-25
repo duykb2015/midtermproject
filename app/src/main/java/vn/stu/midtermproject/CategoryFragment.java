@@ -160,6 +160,13 @@ public class CategoryFragment extends Fragment {
                     .setPositiveButton(R.string.app_dialog_cancel, null)
                     .setNeutralButton(R.string.app_dialog_confirm, (dialogInterface, i) -> {
                         int categoryID = listCategory.get(index).getId();
+                        SQLiteDatabase database = DBUtil.openOrCreateDataBases(CategoryFragment.this);
+                        Cursor cursor = database.rawQuery("SELECT * FROM product WHERE category_id = ?", new String[]{categoryID + ""});
+                        cursor.moveToFirst();
+                        if (cursor.getCount() > 0) {
+                            Toast.makeText(getContext(), getString(R.string.app_have_product_use), Toast.LENGTH_SHORT).show();
+                            return;
+                        }
                         deleteCategory(categoryID);
                         adapter.remove(listCategory.get(index));
                         adapter.notifyDataSetChanged();
