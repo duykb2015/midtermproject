@@ -27,6 +27,7 @@
 
     <string name="app_have_product_use">Có sản phẩm đang sử dụng danh mục này!</string>
 
+
     <string name="app_dialog_title_exit">Xác nhận thoát</string>
     <string name="app_dialog_title_delete">Xác nhận xoá</string>
     <string name="app_dialog_message_exit">Bạn có chắc là bạn muốn đóng ứng dụng?</string>
