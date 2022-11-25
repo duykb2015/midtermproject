@@ -25,6 +25,9 @@
     <string name="app_main_title">Trang chủ</string>
     <string name="app_file_to_large">Tệp quá lớn, vui lòng chọn một tệp khác (Kính thước ảnh tối đa là 1000x1000, và phải nhẹ hơn 1MB)</string>
 
+    <string name="app_have_product_use">Có sản phẩm đang sử dụng danh mục này!</string>
+
+
     <string name="app_dialog_title_exit">Xác nhận thoát</string>
     <string name="app_dialog_title_delete">Xác nhận xoá</string>
     <string name="app_dialog_message_exit">Bạn có chắc là bạn muốn đóng ứng dụng?</string>
